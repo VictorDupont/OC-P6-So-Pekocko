@@ -4,7 +4,7 @@
 2. Mettre le fichier .env dans le dossier backend.
 3. Lire le fichier README.md du dossier frontend pour s'assurer que tout est bien installé !
 4. Lancer un terminal dans le dossier backend et exécuter la commande : `npm install` puis `nodemon server` !
-5. Lancer un terminal dans le dossier frontend et exécuter la commande `npm install` puis `npm start` ! (Autrement, toute la partie frontend est également disponible [ici](https://github.com/OpenClassrooms-Student-Center/dwj-projet6))
+5. Lancer un terminal dans le dossier frontend et exécuter la commande `npm install` puis `npm start` ! (Autrement, toute la partie frontend est également disponible [ici](https://github.com/OpenClassrooms-Student-Center/dwj-projet6)
 6. Attendre quelques instants que tout se lance...
 7. Vous pouvez à présent utiliser le projet :
     - Vous inscrire

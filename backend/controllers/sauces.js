@@ -55,29 +55,45 @@ exports.likeOrDislikeSauce = (req, res, next) => {
 	let rating = req.body.like;
 
 	if (rating === 1) {
-		Sauce.updateOne(
-			{ _id: req.params.id },
-			{ $push: { usersLiked: req.body.userId }, $inc: { likes: +1 } }
-		)
-			.then(() =>
-				res.status(200).json({
-					message: `${req.body.userId} a ajouté un j'aime à la sauce ${req.params.id}`,
-				})
+		Sauce.findOne({ _id: req.params.id }).then((sauce) => {
+			if (sauce.usersLiked.includes(req.body.userId)) {
+				return console.log("Vous ne pouvez pas liker plus d'une fois !");
+			}
+			if (sauce.usersDisliked.includes(req.body.userId)) {
+				return console.log("Vous avez déjà disliké ! Vous ne pouvez pas liker !");
+			}
+			Sauce.updateOne(
+				{ _id: req.params.id },
+				{ $push: { usersLiked: req.body.userId }, $inc: { likes: +1 } }
 			)
-			.catch((error) => res.status(400).json({ error }));
+				.then(() =>
+					res.status(200).json({
+						message: `${req.body.userId} a ajouté un j'aime à la sauce ${req.params.id}`,
+					})
+				)
+				.catch((error) => res.status(400).json({ error }));
+		});
 	}
 
 	if (rating === -1) {
-		Sauce.updateOne(
-			{ _id: req.params.id },
-			{ $push: { usersDisliked: req.body.userId }, $inc: { dislikes: +1 } }
-		)
-			.then(() =>
-				res.status(200).json({
-					message: `${req.body.userId} a ajouté un dislike à la sauce ${req.params.id}`,
-				})
+		Sauce.findOne({ _id: req.params.id }).then((sauce) => {
+			if (sauce.usersDisliked.includes(req.body.userId)) {
+				return console.log("Vous ne pouvez pas disliker plus d'une fois !");
+			}
+			if (sauce.usersLiked.includes(req.body.userId)) {
+				return console.log("Vous avez déjà liké ! Vous ne pouvez pas disliker !");
+			}
+			Sauce.updateOne(
+				{ _id: req.params.id },
+				{ $push: { usersDisliked: req.body.userId }, $inc: { dislikes: +1 } }
 			)
-			.catch((error) => res.status(400).json({ error }));
+				.then(() =>
+					res.status(200).json({
+						message: `${req.body.userId} a ajouté un dislike à la sauce ${req.params.id}`,
+					})
+				)
+				.catch((error) => res.status(400).json({ error }));
+		});
 	}
 
 	if (rating === 0) {
