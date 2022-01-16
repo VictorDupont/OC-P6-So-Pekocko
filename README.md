@@ -18,3 +18,12 @@
     - Modèle de données ✅
     - Opérations CRUD sécurisées ✅
     - Stockage sécurisé des informations ✅
+
+
+![image](https://user-images.githubusercontent.com/76693227/149678927-2de4b240-f39e-43f9-9c72-24cf7993ea77.png)
+![image](https://user-images.githubusercontent.com/76693227/149678801-95c7b429-ba3d-4327-852a-ede4328061b8.png)
+![image](https://user-images.githubusercontent.com/76693227/149678999-eb016c09-a82e-4a18-839c-a8c8d970096a.png)
+
+
+
+
